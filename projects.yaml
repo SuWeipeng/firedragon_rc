@@ -1,0 +1,5 @@
+projects:
+  stm32f103c8:
+  - project.yaml
+settings:
+  export_dir: .
