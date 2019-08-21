@@ -60,7 +60,8 @@ static void MX_ADC1_Init(void);
 static void MX_ADC2_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
-
+void setup(void);
+void loop(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -114,6 +115,8 @@ int main(void)
   NRF24_enableAckPayload();
 	
   NRF24_startListening();
+  
+  setup();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -121,6 +124,7 @@ int main(void)
   while (1)
   {
     update_mavlink();
+    loop();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
