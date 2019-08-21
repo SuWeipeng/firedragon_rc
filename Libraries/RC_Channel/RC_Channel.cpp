@@ -30,9 +30,9 @@ float RC_Channel::vel_x(int8_t inv)
   if(abs(val-mid) < ADC_DEAD_ZONE) return 0.0f;
 
   if(val > mid) {
-    ret = (val-mid)*(1.33f/(max-mid));
+    ret = (val-mid)*(0.104f/(max-mid));
   } else {
-    ret = (val-mid)*(1.33f/(mid-min));
+    ret = (val-mid)*(0.104f/(mid-min));
   }
   
   if(inv == -1) ret *= inv;
@@ -57,9 +57,9 @@ float RC_Channel::vel_y(int8_t inv)
   if(abs(val-mid) < ADC_DEAD_ZONE) return 0.0f;
 
   if(val > mid) {
-    ret = (val-mid)*(1.33f/(max-mid));
+    ret = (val-mid)*(0.104f/(max-mid));
   } else {
-    ret = (val-mid)*(1.33f/(mid-min));
+    ret = (val-mid)*(0.104f/(mid-min));
   }
   
   if(inv == -1) ret *= inv;
