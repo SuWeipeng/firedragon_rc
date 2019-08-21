@@ -42,6 +42,13 @@ tool_specific:
     macros:
     - USE_HAL_DRIVER
     - STM32F103xB
+    - __ARMCOMPILER_LIBCXX
+    misc:
+      cxx_flags:
+      - --cpp11
+      - -Otime
+      - --enum_is_int
+      - -g
     sources:
       StartUp:
       - IDE/MDK5
