@@ -13,8 +13,10 @@ common:
   - Drivers/nRF24L01_Driver/Inc
   - Inc
   - Libraries
+  - Libraries/AP_Math
   - Libraries/mavlink
   - Libraries/mavlink/car
+  - Libraries/RC_Channel
   - Middlewares
   - Middlewares/ST
   - Middlewares/ST/STM32_USB_Device_Library
@@ -32,7 +34,9 @@ common:
     - Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
     - Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
     - Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
-
+    Library:
+    - Libraries/AP_Math
+    - Libraries/RC_Channel
     Src:
     - Src
   target:
