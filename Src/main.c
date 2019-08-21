@@ -109,7 +109,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+    char TxBuf[100] = {"Hello STM32\r\n"};
+    VCPSend((uint8_t *)TxBuf, strlen(TxBuf));
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
