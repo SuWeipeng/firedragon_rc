@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "MY_NRF24.h"
+#include "nrf_mavlink.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,7 +65,7 @@ static void MX_SPI2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint64_t TxpipeAddrs = 0x11223344AA;
+uint64_t RxpipeAddrs = 0x11223344AA;
 /* USER CODE END 0 */
 
 /**
@@ -103,22 +104,23 @@ int main(void)
   /* USER CODE BEGIN 2 */
   NRF24_begin(NRF_CE_GPIO_Port, NRF_CS_Pin, NRF_CE_Pin, hspi2);
   printRadioSettings();
-  
-  //**** TRANSMIT - ACK ****//
-  NRF24_stopListening();
-  NRF24_openWritingPipe(TxpipeAddrs);
+
   NRF24_setAutoAck(true);
   NRF24_setChannel(52);
   NRF24_setPayloadSize(32);
-  
+  NRF24_openReadingPipe(1, RxpipeAddrs);
+	
   NRF24_enableDynamicPayloads();
   NRF24_enableAckPayload();
+	
+  NRF24_startListening();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    update_mavlink();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
