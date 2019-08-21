@@ -4,8 +4,9 @@
 #include <stm32f1xx_hal.h>
 
 #define ADC_CHANNEL_CNT 4
-#define ADC_CHANNEL_FRE 100
-#define ADC_DEAD_ZONE   50
+#define ADC_BUFF_LEN    ADC_CHANNEL_CNT*2
+#define ADC_DEAD_ZONE   100
+#define ADC_VCP_DEBUG   0
 
 class RC_Channel
 {
@@ -21,7 +22,7 @@ public:
   
 private:
   ADC_HandleTypeDef* _hadc;
-  uint32_t _adc_buf[ADC_CHANNEL_CNT * ADC_CHANNEL_FRE];
+  uint32_t           _adc_buf[ADC_BUFF_LEN];
 };
 
 #endif /* __RC_CHANNEL__ */

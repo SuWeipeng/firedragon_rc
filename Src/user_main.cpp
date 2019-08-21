@@ -15,7 +15,9 @@ void setup(void)
 
 void loop(void)
 {
-  rc->rad_z();
+  rc->vel_x();
+  rc->vel_y();
+  rc->rad_z(-1);
 }
 
 #if defined(__GNUC__) && defined(__cplusplus)
