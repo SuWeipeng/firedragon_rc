@@ -1,6 +1,8 @@
+#include "nrf_mavlink.h"
 #include "RC_Channel.h"
 
 extern ADC_HandleTypeDef hadc1;
+extern vel_target vel;
 
 RC_Channel* rc;
 
@@ -15,9 +17,9 @@ void setup(void)
 
 void loop(void)
 {
-  rc->vel_x();
-  rc->vel_y();
-  rc->rad_z(-1);
+  vel.vel_x = rc->vel_x();
+  vel.vel_y = rc->vel_y();
+  vel.rad_z = rc->rad_z(-1);
 }
 
 #if defined(__GNUC__) && defined(__cplusplus)
