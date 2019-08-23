@@ -23,16 +23,16 @@ float RC_Channel::vel_x(int8_t inv)
 {
   float    ret = 0.0f;
   uint16_t min = 0;
-  uint16_t mid = 1976;
-  uint16_t max = 4020;
+  uint16_t mid = ADC_CHANNEL_X_MID;
+  uint16_t max = ADC_CHANNEL_X_MAX;
   uint16_t val = get_value(0);
 
   if(abs(val-mid) < ADC_DEAD_ZONE) return 0.0f;
 
   if(val > mid) {
-    ret = (val-mid)*(0.104f/(max-mid));
+    ret = (val-mid)*(VEL_X_MAX_M_S/(max-mid));
   } else {
-    ret = (val-mid)*(0.104f/(mid-min));
+    ret = (val-mid)*(VEL_X_MAX_M_S/(mid-min));
   }
   
   if(inv == -1) ret *= inv;
@@ -43,23 +43,23 @@ float RC_Channel::vel_x(int8_t inv)
   VCPSend((uint8_t *)buffer, strlen(buffer));
 #endif 
   
-  return ret;
+  return constrain_float(ret, -VEL_X_MAX_M_S, VEL_X_MAX_M_S);
 }
 
 float RC_Channel::vel_y(int8_t inv)
 {
   float    ret = 0.0f;
   uint16_t min = 0;
-  uint16_t mid = 1955;
-  uint16_t max = 4015;
+  uint16_t mid = ADC_CHANNEL_Y_MID;
+  uint16_t max = ADC_CHANNEL_Y_MAX;
   uint16_t val = get_value(2);
 
   if(abs(val-mid) < ADC_DEAD_ZONE) return 0.0f;
 
   if(val > mid) {
-    ret = (val-mid)*(0.104f/(max-mid));
+    ret = (val-mid)*(VEL_Y_MAX_M_S/(max-mid));
   } else {
-    ret = (val-mid)*(0.104f/(mid-min));
+    ret = (val-mid)*(VEL_Y_MAX_M_S/(mid-min));
   }
   
   if(inv == -1) ret *= inv;
@@ -70,23 +70,23 @@ float RC_Channel::vel_y(int8_t inv)
   VCPSend((uint8_t *)buffer, strlen(buffer));
 #endif  
   
-  return ret;
+  return constrain_float(ret, -VEL_Y_MAX_M_S, VEL_Y_MAX_M_S);
 }
 
 float RC_Channel::rad_z(int8_t inv)
 {
   float    ret = 0.0f;
   uint16_t min = 0;
-  uint16_t mid = 1926;
-  uint16_t max = 4010;
+  uint16_t mid = ADC_CHANNEL_Z_MID;
+  uint16_t max = ADC_CHANNEL_Z_MAX;
   uint16_t val = get_value(1);
 
   if(abs(val-mid) < ADC_DEAD_ZONE) return 0.0f;
 
   if(val > mid) {
-    ret = (val-mid)*(0.7f/(max-mid));
+    ret = (val-mid)*(RAD_Z_MAX_RAD_S/(max-mid));
   } else {
-    ret = (val-mid)*(0.7f/(mid-min));
+    ret = (val-mid)*(RAD_Z_MAX_RAD_S/(mid-min));
   }
   
   if(inv == -1) ret *= inv;
@@ -97,5 +97,5 @@ float RC_Channel::rad_z(int8_t inv)
   VCPSend((uint8_t *)buffer, strlen(buffer));
 #endif 
   
-  return ret;
+  return constrain_float(ret, -RAD_Z_MAX_RAD_S, RAD_Z_MAX_RAD_S);
 }
