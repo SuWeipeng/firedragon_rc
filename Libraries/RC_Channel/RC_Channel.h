@@ -5,19 +5,19 @@
 
 #define ADC_CHANNEL_CNT 4
 #define ADC_BUFF_LEN    ADC_CHANNEL_CNT*2
-#define ADC_DEAD_ZONE   100
-#define ADC_VCP_DEBUG   0
+#define ADC_DEAD_ZONE   300
+#define ADC_VCP_DEBUG   1
 
 #define ADC_CHANNEL_X_MID 1970
-#define ADC_CHANNEL_Y_MID 1993
+#define ADC_CHANNEL_Y_MID 1920
 #define ADC_CHANNEL_Z_MID 1980
 #define ADC_CHANNEL_X_MAX 4032
 #define ADC_CHANNEL_Y_MAX 3873
 #define ADC_CHANNEL_Z_MAX 3807
 
-#define VEL_X_MAX_M_S   0.104f
-#define VEL_Y_MAX_M_S   0.104f
-#define RAD_Z_MAX_RAD_S 0.7f
+#define VEL_X_MAX_M_S   0.0685f
+#define VEL_Y_MAX_M_S   0.0685f
+#define RAD_Z_MAX_RAD_S 0.82f
 
 class RC_Channel
 {

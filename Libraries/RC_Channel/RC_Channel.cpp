@@ -26,13 +26,15 @@ float RC_Channel::vel_x(int8_t inv)
   uint16_t mid = ADC_CHANNEL_X_MID;
   uint16_t max = ADC_CHANNEL_X_MAX;
   uint16_t val = get_value(0);
+  uint16_t mid_zone_up   = mid + ADC_DEAD_ZONE;
+  uint16_t mid_zone_down = mid - ADC_DEAD_ZONE;
 
   if(abs(val-mid) < ADC_DEAD_ZONE) return 0.0f;
 
   if(val > mid) {
-    ret = (val-mid)*(VEL_X_MAX_M_S/(max-mid));
+    ret = (val-mid_zone_up)*(VEL_X_MAX_M_S/(max-mid_zone_up));
   } else {
-    ret = (val-mid)*(VEL_X_MAX_M_S/(mid-min));
+    ret = (val-mid_zone_down)*(VEL_X_MAX_M_S/(mid_zone_down-min));
   }
   
   if(inv == -1) ret *= inv;
@@ -53,13 +55,15 @@ float RC_Channel::vel_y(int8_t inv)
   uint16_t mid = ADC_CHANNEL_Y_MID;
   uint16_t max = ADC_CHANNEL_Y_MAX;
   uint16_t val = get_value(2);
+  uint16_t mid_zone_up   = mid + ADC_DEAD_ZONE;
+  uint16_t mid_zone_down = mid - ADC_DEAD_ZONE;
 
   if(abs(val-mid) < ADC_DEAD_ZONE) return 0.0f;
 
   if(val > mid) {
-    ret = (val-mid)*(VEL_Y_MAX_M_S/(max-mid));
+    ret = (val-mid_zone_up)*(VEL_Y_MAX_M_S/(max-mid_zone_up));
   } else {
-    ret = (val-mid)*(VEL_Y_MAX_M_S/(mid-min));
+    ret = (val-mid_zone_down)*(VEL_Y_MAX_M_S/(mid_zone_down-min));
   }
   
   if(inv == -1) ret *= inv;
@@ -80,13 +84,15 @@ float RC_Channel::rad_z(int8_t inv)
   uint16_t mid = ADC_CHANNEL_Z_MID;
   uint16_t max = ADC_CHANNEL_Z_MAX;
   uint16_t val = get_value(1);
+  uint16_t mid_zone_up   = mid + ADC_DEAD_ZONE;
+  uint16_t mid_zone_down = mid - ADC_DEAD_ZONE;
 
   if(abs(val-mid) < ADC_DEAD_ZONE) return 0.0f;
 
   if(val > mid) {
-    ret = (val-mid)*(RAD_Z_MAX_RAD_S/(max-mid));
+    ret = (val-mid_zone_up)*(RAD_Z_MAX_RAD_S/(max-mid_zone_up));
   } else {
-    ret = (val-mid)*(RAD_Z_MAX_RAD_S/(mid-min));
+    ret = (val-mid_zone_down)*(RAD_Z_MAX_RAD_S/(mid_zone_down-min));
   }
   
   if(inv == -1) ret *= inv;
