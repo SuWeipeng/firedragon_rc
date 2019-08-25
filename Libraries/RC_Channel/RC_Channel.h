@@ -15,9 +15,9 @@
 #define ADC_CHANNEL_Y_MAX 3873
 #define ADC_CHANNEL_Z_MAX 3807
 
-#define VEL_X_MAX_M_S   0.0685f
-#define VEL_Y_MAX_M_S   0.0685f
-#define RAD_Z_MAX_RAD_S 0.82f
+#define VEL_X_MAX_M_S   0.104f
+#define VEL_Y_MAX_M_S   0.104f
+#define RAD_Z_MAX_RAD_S 0.7f
 
 class RC_Channel
 {
