@@ -41,7 +41,7 @@ float RC_Channel::vel_x(int8_t inv)
   
 #if ADC_VCP_DEBUG == 1  
   char buffer[30];
-  sprintf(buffer, "vel_x:%.2f\r\n", ret);
+  sprintf(buffer, "vel_x:%.3f\r\n", ret);
   VCPSend((uint8_t *)buffer, strlen(buffer));
 #endif 
   
@@ -70,7 +70,7 @@ float RC_Channel::vel_y(int8_t inv)
   
 #if ADC_VCP_DEBUG == 1  
   char buffer[30];
-  sprintf(buffer, "vel_y:%.2f\r\n", ret);
+  sprintf(buffer, "vel_y:%.3f\r\n", ret);
   VCPSend((uint8_t *)buffer, strlen(buffer));
 #endif  
   
@@ -99,7 +99,7 @@ float RC_Channel::rad_z(int8_t inv)
   
 #if ADC_VCP_DEBUG == 1  
   char buffer[30];
-  sprintf(buffer, "rad_z:%.2f\r\n", ret);
+  sprintf(buffer, "rad_z:%.3f\r\n", ret);
   VCPSend((uint8_t *)buffer, strlen(buffer));
 #endif 
   
