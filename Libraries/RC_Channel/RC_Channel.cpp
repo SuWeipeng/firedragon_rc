@@ -25,7 +25,11 @@ float RC_Channel::vel_x(int8_t inv)
   uint16_t min = 0;
   uint16_t mid = ADC_CHANNEL_X_MID;
   uint16_t max = ADC_CHANNEL_X_MAX;
+#if defined(RC_MODE_1)
   uint16_t val = get_value(0);
+#else
+  uint16_t val = get_value(3);
+#endif
   uint16_t mid_zone_up   = mid + ADC_DEAD_ZONE;
   uint16_t mid_zone_down = mid - ADC_DEAD_ZONE;
 

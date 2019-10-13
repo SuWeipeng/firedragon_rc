@@ -3,6 +3,8 @@
 
 #include <stm32f1xx_hal.h>
 
+#define RC_MODE_1
+
 #define ADC_CHANNEL_CNT 4
 #define ADC_BUFF_LEN    ADC_CHANNEL_CNT*2
 #define ADC_DEAD_ZONE   300
